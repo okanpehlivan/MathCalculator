@@ -42,18 +42,10 @@
 
         commandDelegate.send(pluginResult, callbackId: command?.callbackId)
     }
-
-    @objc(getUserData:) func getUserData(_ command: CDVInvokedUrlCommand) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let userDataController = storyboard.instantiateViewController(withIdentifier: "controllerId") as! ViewController
-        userDataController.userDataDelegate = self
-        userDataController.cdvCommand = command
-        viewController.addChildController(userDataController)
-    }
 }
 
 // User Report date delegate methods which sends result back to ionic app from UIViewController
-extension MathCalculator: UserDataDelegate {
+extension MathCalculator: Any {
     func sendData(userData: [String : Any], command: CDVInvokedUrlCommand) {
         print("Data: \(userData)")
         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: userData)
