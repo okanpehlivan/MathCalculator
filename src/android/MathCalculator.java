@@ -7,9 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * This class echoes a string called from JavaScript.
- */
+import java.util.jar.Manifest;
+
 public class MathCalculator extends CordovaPlugin {
 
     @Override
@@ -18,12 +17,44 @@ public class MathCalculator extends CordovaPlugin {
             this.add(args, callbackContext);
 
             return true;
-        } else if (action.equals("substract")) {
-            this.substract(args, callbackContext);
+        } else if (action.equals("getLocationPermission")) {
+            this.getLocationPermission("", callbackContext);
 
             return true;
         }
         return false;
+    }
+
+    private void getLocationPermission(String action, CallbackContext callback) {
+        try {
+            ActivityResultLauncher<String[]> locationPermissionRequest =
+                    registerForActivityResult(new ActivityResultContracts
+                                    .RequestMultiplePermissions(), result -> {
+                                Boolean fineLocationGranted = result.getOrDefault(
+                                        Manifest.permission.ACCESS_FINE_LOCATION, false);
+                                Boolean coarseLocationGranted = result.getOrDefault(
+                                        Manifest.permission.ACCESS_COARSE_LOCATION,false);
+
+                                if (fineLocationGranted != null && fineLocationGranted) {
+                                    // Precise location access granted.
+                                    callback.success(true);
+                                } else if (coarseLocationGranted != null && coarseLocationGranted) {
+                                    // Only approximate location access granted.
+                                    callback.success(true);
+                                } else {
+                                    // No location access granted.
+                                    callback.success(false);
+                                }
+                            }
+                    );
+
+            locationPermissionRequest.launch(new String[] {
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            });
+        } catch (Exception ex) {
+            callback.error("Konum servisleri çalışırken bir hata verdi");
+        }
     }
 
     private void add(JSONArray args, CallbackContext callback) {
