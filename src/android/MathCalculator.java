@@ -21,7 +21,7 @@ public class MathCalculator extends CordovaPlugin {
 
             return true;
         } else if (action.equals("getLocationPermission")) {
-            this.getLocationPermission(args, callbackContext);
+            this.getLocationPermission("", callbackContext);
 
             return true;
         }
