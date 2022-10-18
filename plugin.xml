@@ -13,7 +13,7 @@
          </feature>
       </config-file>
       <config-file parent="/*" target="AndroidManifest.xml" />
-      <source-file src="src/android/MathCalculator.java" target-dir="src/cordova/plugin/mathcalculator/MathCalculator" />
+      <source-file src="src/android/MathCalculator.kt" target-dir="src/cordova/plugin/mathcalculator/MathCalculator" />
    </platform>
 
    <platform name="ios">
