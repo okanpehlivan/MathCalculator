@@ -7,7 +7,7 @@ import CoreLocation
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
 
     //This method is called when the plugin is initialized; plugin setup methods got here
-    override func pluginInitialize() {
+    override pluginInitialize() {
         manager = CLLocationManager
         super.pluginInitialize()
         manager.delegate = self
@@ -44,14 +44,5 @@ import CoreLocation
 
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
-    }
-}
-
-// User Report date delegate methods which sends result back to ionic app from UIViewController
-extension MathCalculator: Any {
-    func sendData(userData: [String : Any], command: CDVInvokedUrlCommand) {
-        print("Data: \(userData)")
-        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: userData)
-        self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
     }
 }
