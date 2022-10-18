@@ -1,7 +1,6 @@
 import CoreLocation
 
-@objc(MathCalculator) class MathCalculator : CDVPlugin, NSObject, CLLocationManagerDelegate {
-
+@objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate {
     let manager: CLLocationManager
 
     // MARK: Properties
@@ -46,27 +45,13 @@ import CoreLocation
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
     }
-
-    /* This methods accepts string messgae from ionic app
-     and returns a message */
-    // @objc(coolMethod:) func coolMethod(_ command: CDVInvokedUrlCommand?) {
-    //     var pluginResult: CDVPluginResult? = nil
-    //     let echo = command?.arguments[0] as? String
-    //     if let echoString = echo{
-    //         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "\(echoString)!! from India")
-    //     } else {
-    //         pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-    //     }
-
-    //     commandDelegate.send(pluginResult, callbackId: command?.callbackId)
-    // }
 }
 
 // User Report date delegate methods which sends result back to ionic app from UIViewController
-// extension MathCalculator: Any {
-//     func sendData(userData: [String : Any], command: CDVInvokedUrlCommand) {
-//         print("Data: \(userData)")
-//         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: userData)
-//         self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
-//     }
-// }
+extension MathCalculator: Any {
+    func sendData(userData: [String : Any], command: CDVInvokedUrlCommand) {
+        print("Data: \(userData)")
+        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: userData)
+        self.commandDelegate!.send(pluginResult, callbackId: command.callbackId)
+    }
+}
