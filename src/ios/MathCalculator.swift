@@ -7,9 +7,9 @@ import CoreLocation
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
 
     //This method is called when the plugin is initialized; plugin setup methods got here
-    override pluginInitialize() {
+    override func init() {
         manager = CLLocationManager
-        super.pluginInitialize()
+        super.init()
         manager.delegate = self
         manager.distanceFilter = kCLDistanceFilterNone
         manager.desiredAccuracy = kCLLocationAccuracyBest
