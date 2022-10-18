@@ -8,12 +8,10 @@ import CoreLocation
 
     //This method is called when the plugin is initialized; plugin setup methods got here
     override func pluginInitialize() {
-        if manager {
-            manager.delegate = self
-            super.pluginInitialize()
-            manager.distanceFilter = kCLDistanceFilterNone
-            manager.desiredAccuracy = kCLLocationAccuracyBest
-        }
+        manager.delegate = self
+        super.pluginInitialize()
+        manager.distanceFilter = kCLDistanceFilterNone
+        manager.desiredAccuracy = kCLLocationAccuracyBest
     }        
 
     @objc(add:) func add(_ command: CDVInvokedUrlCommand) {
