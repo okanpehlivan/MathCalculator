@@ -8,8 +8,9 @@ import CoreLocation
 
     //This method is called when the plugin is initialized; plugin setup methods got here
     override func pluginInitialize() {
-        manager.delegate = self
+        manager = CLLocationManager
         super.pluginInitialize()
+        manager.delegate = self
         manager.distanceFilter = kCLDistanceFilterNone
         manager.desiredAccuracy = kCLLocationAccuracyBest
     }        
