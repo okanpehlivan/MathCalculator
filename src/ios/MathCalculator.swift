@@ -37,7 +37,7 @@ import CoreLocation
     }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
-        let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+         var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
         
         let authorizationStatus = CLLocationManager.authorizationStatus()
 
@@ -46,6 +46,9 @@ import CoreLocation
              } else {
                  manager?.startUpdatingLocation()
              }
+         
+         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
+                                        messageAs: authorizationStatus.rawValue)
 
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
