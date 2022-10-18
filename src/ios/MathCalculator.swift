@@ -1,6 +1,6 @@
 import CoreLocation
 
-@objc(MathCalculator) class MathCalculator : CDVPlugin{
+@objc(MathCalculator) class MathCalculator : CDVPlugin, NSObject, CLLocationManagerDelegate {
 
     let manager: CLLocationManager
 
