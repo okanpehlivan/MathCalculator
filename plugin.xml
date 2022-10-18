@@ -23,6 +23,5 @@
          </feature>
       </config-file>
       <source-file src="src/ios/MathCalculator.swift" />
-      <dependency id="cordova-plugin-add-swift-support" version="1.7.2"/>
    </platform>
 </plugin>
