@@ -1,18 +1,19 @@
 import CoreLocation
 
 @objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate {
-    var manager: CLLocationManager
-
+    var manager: CLLocationManager?
+    
     // MARK: Properties
-    var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+    let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
 
     //This method is called when the plugin is initialized; plugin setup methods got here
     override func pluginInitialize() {
-        manager = CLLocationManager
+        
+        manager = CLLocationManager()
         super.pluginInitialize()
-        manager.delegate = self
-        manager.distanceFilter = kCLDistanceFilterNone
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager?.delegate = self
+        manager?.distanceFilter = kCLDistanceFilterNone
+        manager?.desiredAccuracy = kCLLocationAccuracyBest
     }        
 
     @objc(add:) func add(_ command: CDVInvokedUrlCommand) {
@@ -36,8 +37,8 @@ import CoreLocation
     }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-        manager.requestWhenInUseAuthorization()
+        let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+        manager?.requestWhenInUseAuthorization()
 
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
