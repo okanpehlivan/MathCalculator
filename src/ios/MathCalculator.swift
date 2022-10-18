@@ -12,9 +12,7 @@ import CoreLocation
         manager = CLLocationManager()
         super.pluginInitialize()
         manager?.delegate = self
-        manager?.distanceFilter = kCLDistanceFilterNone
-        manager?.desiredAccuracy = kCLLocationAccuracyBest
-    }        
+    }
 
     @objc(add:) func add(_ command: CDVInvokedUrlCommand) {
         var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
@@ -37,19 +35,13 @@ import CoreLocation
     }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
-         var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-        
-        let authorizationStatus = CLLocationManager.authorizationStatus()
-
-         if (authorizationStatus == CLAuthorizationStatus.notDetermined) || (authorizationStatus == nil) {
-                manager?.requestWhenInUseAuthorization()
-             } else {
-                 manager?.startUpdatingLocation()
-             }
+         let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+         
+         manager?.requestWhenInUseAuthorization()
          
          pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
-                                        messageAs: authorizationStatus.rawValue)
-
+                                        messageAs: "Çalıştı")
+         
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
     }
