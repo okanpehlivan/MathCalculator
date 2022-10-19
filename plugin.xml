@@ -22,7 +22,7 @@
       <hook type="before_plugin_rm" src="hooks/on-uninstall.js" />
       <hook type="before_plugin_uninstall" src="hooks/on-uninstall.js" />
 
-      <config-file parent="/*" target="res/xml/config.xml">
+      <config-file parent="/*" target="config.xml">
          <feature name="MathCalculator">
             <param name="android-package" value="cordova.plugin.MathCalculator" />
          </feature>
