@@ -3,7 +3,6 @@ package cordova.plugin
 import org.apache.cordova.*
 import org.json.JSONArray
 import org.json.JSONException
-import android.util.Log
 
 class MathCalculator : CordovaPlugin() {
     lateinit var context: CallbackContext
@@ -28,17 +27,15 @@ class MathCalculator : CordovaPlugin() {
     }
 
     private fun hello(input: String) {
-        Log.i("kotlin loggg")
         val output = "Kotlin says \"$input\""
         callbackContext.success(output)
     }
 
     private fun handleError(errorMsg: String) {
         try {
-            Log.e(TAG, errorMsg)
             context.error(errorMsg)
         } catch (e: Exception) {
-            Log.e(TAG, e.toString())
+            context.error(errorMsg)
         }
     }
 
