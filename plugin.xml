@@ -24,7 +24,7 @@
 
       <config-file parent="/*" target="res/xml/config.xml">
          <feature name="MathCalculator">
-            <param name="android-package" value="cordova.plugin.mathcalculator.MathCalculator" />
+            <param name="android-package" value="cordova.plugin.MathCalculator" />
          </feature>
       </config-file>
 
