@@ -14,9 +14,7 @@ class MathCalculator : CordovaPlugin() {
         var result = true
         try {
             if (action == "hello") {
-                val input = data.getString(0)
-                val output = "Kotlin says \"$input\""
-                callbackContext.success(output)
+                hello("Selammmm")
             } else {
                 handleError("Invalid action")
                 result = false
@@ -27,6 +25,11 @@ class MathCalculator : CordovaPlugin() {
         }
 
         return result
+    }
+
+    private fun hello(input: String) {
+        val output = "Kotlin says \"$input\""
+        callbackContext.success(output)
     }
 
     private fun handleError(errorMsg: String) {
