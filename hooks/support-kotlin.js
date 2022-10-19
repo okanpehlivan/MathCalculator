@@ -59,7 +59,7 @@ function addSupport() {
 }
 module.exports = function (ctx) {
   try {
-    deferral = ctx.require("q").defer();
+    deferral = ctx.requireCordovaModule("q").defer();
     addSupport();
     deferral.resolve();
   } catch (e) {

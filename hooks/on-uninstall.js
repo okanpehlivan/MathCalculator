@@ -41,13 +41,13 @@ function removeKotlinSourceFiles() {
 }
 module.exports = function (ctx) {
   try {
-    deferral = ctx.require("q")?.defer();
+    deferral = ctx.requireCordovaModule("q").defer();
     removeKotlinSourceFiles();
-    deferral?.resolve();
+    deferral.resolve();
   } catch (e) {
     let msg = e.toString();
     console.dir(e);
-    deferral?.reject(msg);
-    return deferral?.promise;
+    deferral.reject(msg);
+    return deferral.promise;
   }
 };
