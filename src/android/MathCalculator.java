@@ -1,5 +1,10 @@
 package cordova.plugin.mathcalculator;
 
+import android.Manifest;
+import android.app.Activity;
+import android.util.Log;
+import androidx.core.app.ActivityCompat;
+import androidx.core.util.Preconditions.checkNotNull;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import java.util.Locale;
@@ -21,16 +26,15 @@ public class MathCalculator extends CordovaPlugin {
 
             return true;
         } else if (action.equals("getLocationPermission")) {
-            this.getLocationPermission("", callbackContext);
+            this.locationManager("", callbackContext);
 
             return true;
         }
         return false;
     }
 
-    private void getLocationPermission(String action, CallbackContext callback) {
+    private void locationManager(String action, CallbackContext callback) {
         try {
-            String result = Locale.getDefault().getCountry();
             callback.success(""+ result );
         } catch (Exception ex) {
             callback.error("Location permission error");
