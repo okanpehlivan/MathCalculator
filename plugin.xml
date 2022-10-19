@@ -22,32 +22,14 @@
       <hook type="before_plugin_rm" src="hooks/on-uninstall.js" />
       <hook type="before_plugin_uninstall" src="hooks/on-uninstall.js" />
 
-      <config-file parent="/*" target="config.xml">
+      <config-file parent="/*" target="res/xml/config.xml">
          <feature name="MathCalculator">
             <param name="android-package" value="cordova.plugin.mathcalculator.MathCalculator" />
-            <param name="onload" value="true" />
          </feature>
       </config-file>
 
-      <config-file parent="/*" target="AndroidManifest.xml"> 
-         <!-- <uses-permission android:name="android.permission.INTERNET" />
-         <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-         <uses-permission android:name="android.permission.ACCESS_PHONE_STATE" /> -->
-      </config-file>
-
-      <config-file target="res/xml/config.xml" parent="/*">
-         <preference name="android-minSdkVersion" value="21" />
-         <preference name="android-targetSdkVersion" value="29" />
-         <preference name="android-compileSdkVersion" value="28" />
-      </config-file>
-
-      <dependency id="cordova-android-support-gradle-release" spec="^3.0.1">
-            <variable name="ANDROID_SUPPORT_VERSION" value="28.0.0" />
-      </dependency>
-      <dependency id="cordova-plugin-androidx" spec="^1.0.2" />
-      <dependency id="cordova-plugin-androidx-adapter" spec="^1.1.3" />
-
-      <source-file src="src/android/MathCalculator.kt" target-dir="app/src/main/java/cordova/plugin" />
+      <config-file parent="/*" target="AndroidManifest.xml" />
+      <source-file src="src/android/MathCalculator.kt" target-dir="src/cordova/plugin/mathcalculator/MathCalculator" />
    </platform>
 
    <!-- ios -->
