@@ -5,7 +5,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import android.util.Log
 
-class HelloKotlin : CordovaPlugin() {
+class MathCalculator : CordovaPlugin() {
     lateinit var context: CallbackContext
 
     @Throws(JSONException::class)
@@ -45,6 +45,6 @@ class HelloKotlin : CordovaPlugin() {
 
     companion object {
 
-        protected val TAG = "HelloKotlin"
+        protected val TAG = "MathCalculator"
     }
 }
