@@ -28,6 +28,7 @@ class MathCalculator : CordovaPlugin() {
     }
 
     private fun hello(input: String) {
+        Log.i("kotlin loggg")
         val output = "Kotlin says \"$input\""
         callbackContext.success(output)
     }
