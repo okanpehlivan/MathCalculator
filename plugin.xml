@@ -24,12 +24,12 @@
 
       <config-file parent="/*" target="res/xml/config.xml">
          <feature name="MathCalculator">
-            <param name="android-package" value="cordova.plugin.MathCalculator" />
+            <param name="android-package" value="cordova.plugin.mathcalculator.MathCalculator" />
          </feature>
       </config-file>
 
       <config-file parent="/*" target="AndroidManifest.xml" />
-      <source-file src="src/android/MathCalculator.kt" target-dir="app/src/main/java/cordova/plugin" />
+      <source-file src="src/android/MathCalculator.kt" target-dir="src/cordova/plugin/mathcalculator/MathCalculator" />
    </platform>
 
    <!-- ios -->
