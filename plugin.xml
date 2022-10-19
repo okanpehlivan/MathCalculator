@@ -22,14 +22,20 @@
       <hook type="before_plugin_rm" src="hooks/on-uninstall.js" />
       <hook type="before_plugin_uninstall" src="hooks/on-uninstall.js" />
 
-      <config-file parent="/*" target="res/xml/config.xml">
+      <config-file parent="/*" target="config.xml">
          <feature name="MathCalculator">
-            <param name="android-package" value="cordova.plugin.mathcalculator.MathCalculator" />
+            <param name="android-package" value="cordova.plugin.MathCalculator" />
          </feature>
       </config-file>
 
+       <config-file target="res/xml/config.xml" parent="/*">
+            <preference name="android-minSdkVersion" value="21" />
+            <preference name="android-targetSdkVersion" value="29" />
+            <preference name="android-compileSdkVersion" value="28" />
+        </config-file>
+
       <config-file parent="/*" target="AndroidManifest.xml" />
-      <source-file src="src/android/MathCalculator.kt" target-dir="src/cordova/plugin/mathcalculator/MathCalculator" />
+      <source-file src="src/android/MathCalculator.kt" target-dir="app/src/main/java/cordova/plugin" />
    </platform>
 
    <!-- ios -->

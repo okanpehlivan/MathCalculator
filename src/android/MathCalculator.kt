@@ -39,7 +39,6 @@ class MathCalculator : CordovaPlugin() {
         } catch (e: Exception) {
             Log.e(TAG, e.toString())
         }
-
     }
 
     private fun handleException(exception: Exception) {
