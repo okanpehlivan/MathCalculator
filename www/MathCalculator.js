@@ -11,3 +11,7 @@ module.exports.locationManager = function (arg0, success, error) {
 module.exports.hello = function (input, success, error) {
   exec(success, error, "MathCalculator", "hello", [input]);
 };
+
+module.exports.rectangle = function (success, error) {
+  exec(success, error, "MathCalculator", "rectangle");
+};

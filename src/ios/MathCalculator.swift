@@ -34,6 +34,31 @@ import CoreLocation
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
     }
+    
+    @objc(rectangle:) func rectangle(_ command: CDVInvokedUrlCommand) {
+        var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+        
+        // Get the Graphics Context
+        let context = UIGraphicsGetCurrentContext()
+
+        // Set the rectangle outerline-width
+        context?.setLineWidth( 5.0)
+
+        // Set the rectangle outerline-colour
+        UIColor.red.set()
+
+        // Create Rectangle
+        context?.addRect( CGRect(x: 0, y: 0, width: 100, height: 100))
+
+        // Draw
+        context?.strokePath()
+    
+        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
+                                   messageAs: "Çalıştı")
+    
+        self.commandDelegate!.send(pluginResult,
+                               callbackId: command.callbackId)
+    }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
          var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
