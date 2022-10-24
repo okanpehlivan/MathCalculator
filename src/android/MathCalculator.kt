@@ -22,11 +22,11 @@ class MathCalculator : CordovaPlugin() {
             if (action == "hello") {
                 hello("Selammmm")
             } else if (action == "start") {
-              val activity: Activity? = currentActivity
-              
+              val activity: Activity?
+
               if (activity !== null) {
-                ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.CAMERA))
-                
+                ActivityCompat.requestPermissions(activity, new String[] {Manifest.permission.CAMERA}, 100);
+
                 // return startCamera(data.getInt(0), data.getInt(1), data.getInt(2), data.getInt(3), data.getString(4), data.getBoolean(5), data.getBoolean(6), data.getBoolean(7), data.getString(8), data.getBoolean(9), data.getBoolean(10), data.getBoolean(11), callbackContext);
               }
             } else {
