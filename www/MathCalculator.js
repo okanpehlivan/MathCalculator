@@ -15,3 +15,11 @@ module.exports.hello = function (input, success, error) {
 module.exports.rectangle = function (success, error) {
   exec(success, error, "MathCalculator", "rectangle");
 };
+
+module.exports.echo = function (input, success, error) {
+  exec(success, error, "MathCalculator", "echo", [input]);
+};
+
+module.exports.start = function (options, success, error) {
+  exec(success, error, "MathCalculator", "start", [options]);
+};
