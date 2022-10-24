@@ -1,27 +1,5 @@
 package cordova.plugin
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.pm.PackageManager;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.hardware.Camera;
-import android.os.Handler;
-import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraManager;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.Size;
-import android.util.SizeF;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.FrameLayout;
-
 import org.apache.cordova.*
 import org.json.JSONArray
 import org.json.JSONException
