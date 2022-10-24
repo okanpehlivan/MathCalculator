@@ -1,19 +1,30 @@
 package cordova.plugin
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.pm.PackageManager;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.hardware.Camera;
+import android.os.Handler;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.util.Size;
+import android.util.SizeF;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.FrameLayout;
+
 import org.apache.cordova.*
 import org.json.JSONArray
 import org.json.JSONException
-import android.view.ViewGroup
-
-import android.view.ViewParent
-
-import android.widget.FrameLayout
-
-import android.util.TypedValue
-
-import android.util.DisplayMetrics
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.fragment.app.FragmentManager
 
 
 class MathCalculator : CordovaPlugin() {
@@ -28,10 +39,10 @@ class MathCalculator : CordovaPlugin() {
                 hello("Selammmm")
             } else if (action == "start") {
               if (cordova.hasPermission(permissions[0])) {
-                return startCamera(args.getInt(0), args.getInt(1), args.getInt(2), args.getInt(3), args.getString(4), args.getBoolean(5), args.getBoolean(6), args.getBoolean(7), args.getString(8), args.getBoolean(9), args.getBoolean(10), args.getBoolean(11), callbackContext);
+                return startCamera(data.getInt(0), data.getInt(1), data.getInt(2), data.getInt(3), data.getString(4), data.getBoolean(5), data.getBoolean(6), data.getBoolean(7), data.getString(8), data.getBoolean(9), data.getBoolean(10), data.getBoolean(11), callbackContext);
               } else {
                 this.execCallback = callbackContext;
-                this.execArgs = args;
+                this.execArgs = data;
                 cordova.requestPermissions(this, CAM_REQ_CODE, permissions);
                 return true;
               }
