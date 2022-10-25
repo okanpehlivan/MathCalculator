@@ -6,11 +6,7 @@ import UIKit
 @available(iOS 13.0, *)
 @objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate, UIWebViewDelegate {
     var manager: CLLocationManager?
-    
     var hostingViewController = UIHostingController(rootView: ExampleView())
-        
-    @IBOutlet weak var containerView:UIView! // cameranın açılmasını istediğimiz view
-    @IBOutlet weak var instructionText: UILabel!
     
     // MARK: Properties
     let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
@@ -22,10 +18,6 @@ import UIKit
         manager?.delegate = self
         manager?.distanceFilter = kCLDistanceFilterNone
         manager?.desiredAccuracy = kCLLocationAccuracyBest
-        
-        instructionText.text = "DENEME YAZISI"
-        instructionText.textColor = .blue
-        containerView.addSubview(instructionText)
     }
 
     @objc(add:) func add(_ command: CDVInvokedUrlCommand) {
