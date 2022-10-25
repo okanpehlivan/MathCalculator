@@ -87,6 +87,7 @@ struct ExampleView: View {
         );
 
         module!.hostingViewController.dismiss(animated: true, completion: nil);
+        module!.hostingViewController.modalPresentationStyle = .fullScreen
 
       } label: {
           Text("Close Me")
