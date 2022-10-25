@@ -16,10 +16,6 @@ module.exports.rectangle = function (input, success, error) {
   exec(success, error, "MathCalculator", "rectangle", [input]);
 };
 
-module.exports.echo = function (input, success, error) {
-  exec(success, error, "MathCalculator", "echo", [input]);
-};
-
 module.exports.start = function (options, success, error) {
   exec(success, error, "MathCalculator", "start", [options]);
 };

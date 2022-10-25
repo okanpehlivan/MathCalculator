@@ -50,16 +50,16 @@ import UIKit
        self.hostingViewController = hostingViewController;
     }
 
-     @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
-         var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-         
-         manager?.requestWhenInUseAuthorization()
-         
-         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
-                                        messageAs: "Çalıştı")
-         
-        self.commandDelegate!.send(pluginResult,
-                                   callbackId: command.callbackId)
+    @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
+        var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+        
+        manager?.requestWhenInUseAuthorization()
+        
+        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
+                                      messageAs: "Çalıştı")
+        
+      self.commandDelegate!.send(pluginResult,
+                                  callbackId: command.callbackId)
     }
 }
 
@@ -70,11 +70,8 @@ struct ExampleView: View {
   var module: MathCalculator?
         
   var body: some View {
-
     VStack {
-
       Spacer()
-
       Text("Example")
 
       Button {
@@ -93,10 +90,10 @@ struct ExampleView: View {
       } label: {
           Text("Close Me")
             .padding()
+            .edgesIgnoringSafeArea(.all)
       }
 
       Spacer()
-
     }
   }
 }
