@@ -1,7 +1,14 @@
 import CoreLocation
+import Foundation
+import UIKit
 
-@objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate {
+@objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate, UIWebViewDelegate {
     var manager: CLLocationManager?
+    var rectangle: CGRect?
+    var context: CGContext?
+        
+    @IBOutlet weak var containerView:UIView! // cameranın açılmasını istediğimiz view
+    @IBOutlet weak var instructionText: UILabel!
     
     // MARK: Properties
     let pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
@@ -13,6 +20,21 @@ import CoreLocation
         manager?.delegate = self
         manager?.distanceFilter = kCLDistanceFilterNone
         manager?.desiredAccuracy = kCLLocationAccuracyBest
+        
+        instructionText.text = "DENEME YAZISI"
+        instructionText.textColor = .blue
+        containerView.addSubview(instructionText)
+        
+        
+        /*
+        rectangle = CGRectMake(0, 100, 320, 100)
+        context = UIGraphicsGetCurrentContext()
+        
+        context!.setFillColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)   //this is the transparent color
+        context!.setStrokeColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        context!.fill(rectangle!)
+        context!.stroke(rectangle!)
+         */
     }
 
     @objc(add:) func add(_ command: CDVInvokedUrlCommand) {
@@ -37,27 +59,15 @@ import CoreLocation
     
     @objc(rectangle:) func rectangle(_ command: CDVInvokedUrlCommand) {
         var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-        
-        // Get the Graphics Context
-        let context = UIGraphicsGetCurrentContext()
-
-        // Set the rectangle outerline-width
-        context?.setLineWidth( 5.0)
-
-        // Set the rectangle outerline-colour
-        UIColor.red.set()
-
-        // Create Rectangle
-        context?.addRect( CGRect(x: 0, y: 0, width: 100, height: 100))
-
-        // Draw
-        context?.strokePath()
     
         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
-                                   messageAs: "Çalıştı")
-    
+                                   messageAs: "www.google.com.tr")
+        
+        
+        self.webView.addSubview(containerView)
+        
         self.commandDelegate!.send(pluginResult,
-                               callbackId: command.callbackId)
+                                   callbackId: command.callbackId)
     }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
