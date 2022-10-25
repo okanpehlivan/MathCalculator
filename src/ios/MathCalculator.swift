@@ -8,7 +8,7 @@ public let deviceBounds = UIScreen.main.bounds
 public let deviceWidth = deviceBounds.size.width
 public let deviceHeight = deviceBounds.size.height
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 @objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate, UIWebViewDelegate {
     var manager: CLLocationManager?
     var hostingViewController = UIHostingController(rootView: ExampleView())
@@ -69,7 +69,7 @@ public let deviceHeight = deviceBounds.size.height
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 struct ExampleView: View {
     
     var callbackId: String?
@@ -102,6 +102,6 @@ struct ExampleView: View {
                             module!.hostingViewController.dismiss(animated: true)
                         }
                     }))
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea(.all, edges: .all)
     }
 }
