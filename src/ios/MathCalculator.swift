@@ -60,8 +60,8 @@ import UIKit
     @objc(rectangle:) func rectangle(_ command: CDVInvokedUrlCommand) {
         //var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
     
-        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
-                                   messageAs: "www.google.com.tr")
+        //pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
+          //                         messageAs: "www.google.com.tr")
         
         
         self.webView.addSubview(containerView)
