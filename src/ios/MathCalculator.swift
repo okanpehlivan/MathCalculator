@@ -1,11 +1,13 @@
 import CoreLocation
 import Foundation
+import SwiftUI
 import UIKit
 
+@available(iOS 13.0, *)
 @objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate, UIWebViewDelegate {
     var manager: CLLocationManager?
-    var rectangle: CGRect?
-    var context: CGContext?
+    
+    var hostingViewController = UIHostingController(rootView: ExampleView())
         
     @IBOutlet weak var containerView:UIView! // cameranın açılmasını istediğimiz view
     @IBOutlet weak var instructionText: UILabel!
@@ -24,17 +26,6 @@ import UIKit
         instructionText.text = "DENEME YAZISI"
         instructionText.textColor = .blue
         containerView.addSubview(instructionText)
-        
-        
-        /*
-        rectangle = CGRectMake(0, 100, 320, 100)
-        context = UIGraphicsGetCurrentContext()
-        
-        context!.setFillColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)   //this is the transparent color
-        context!.setStrokeColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-        context!.fill(rectangle!)
-        context!.stroke(rectangle!)
-         */
     }
 
     @objc(add:) func add(_ command: CDVInvokedUrlCommand) {
@@ -58,16 +49,13 @@ import UIKit
     }
     
     @objc(rectangle:) func rectangle(_ command: CDVInvokedUrlCommand) {
-        //var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
-    
-        //pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
-          //                         messageAs: "www.google.com.tr")
-        
-        
-        return self.webView.addSubview(containerView)
-                
-       // self.commandDelegate!.send(pluginResult,
-          //                         callbackId: command.callbackId)
+        lazy var hostingViewController = UIHostingController(rootView: ExampleView(
+             callbackId: command.callbackId,
+             module: self
+           ));
+
+       self.viewController.show(hostingViewController, sender: self);
+       self.hostingViewController = hostingViewController;
     }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
@@ -81,4 +69,42 @@ import UIKit
         self.commandDelegate!.send(pluginResult,
                                    callbackId: command.callbackId)
     }
+}
+
+@available(iOS 13.0, *)
+struct ExampleView: View {
+
+  var callbackId: String?
+  var module: MathCalculator?
+        
+  var body: some View {
+
+    VStack {
+
+      Spacer()
+
+      Text("Example")
+
+      Button {
+        let pluginResult = CDVPluginResult(
+          status: CDVCommandStatus_OK,
+          messageAs: "Successful"
+        );
+
+        module!.commandDelegate!.send(
+          pluginResult,
+          callbackId: callbackId!
+        );
+
+        module!.hostingViewController.dismiss(animated: true, completion: nil);
+
+      } label: {
+          Text("Close Me")
+            .padding()
+      }
+
+      Spacer()
+
+    }
+  }
 }
