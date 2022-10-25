@@ -4,11 +4,8 @@ import SwiftUI
 import UIKit
 import AVFoundation
 
-public let deviceBounds = UIScreen.main.bounds
-public let deviceWidth = deviceBounds.size.width
-public let deviceHeight = deviceBounds.size.height
 
-@available(iOS 14.0, *)
+@available(iOS 13.0, *)
 @objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate, UIWebViewDelegate {
     var manager: CLLocationManager?
     var hostingViewController = UIHostingController(rootView: ExampleView())
@@ -69,39 +66,40 @@ public let deviceHeight = deviceBounds.size.height
     }
 }
 
-@available(iOS 14.0, *)
+@available(iOS 13.0, *)
 struct ExampleView: View {
-    
-    var callbackId: String?
-    var module: MathCalculator?
-    
-    var body: some View {
-        VStack {
-            Button {
-                let pluginResult = CDVPluginResult(
-                      status: CDVCommandStatus_OK,
-                      messageAs: "Successful"
-                );
 
-                module!.commandDelegate!.send(
-                  pluginResult,
-                  callbackId: callbackId!
-                );
-            } label: {
-                Text("Swift UI Content")
-                    .frame(width: deviceWidth, height: 100)
-                    .background(Color.blue)
-            }
-           
-            Spacer()
-        }
-        .background(Color.orange)
-        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onEnded({ value in
-                        if value.translation.height > 0 {
-                            module!.hostingViewController.dismiss(animated: true)
-                        }
-                    }))
-        .ignoresSafeArea(.all, edges: .all)
+  var callbackId: String?
+  var module: MathCalculator?
+        
+  var body: some View {
+
+    VStack {
+
+      Spacer()
+
+      Text("Example")
+
+      Button {
+        let pluginResult = CDVPluginResult(
+          status: CDVCommandStatus_OK,
+          messageAs: "Successful"
+        );
+
+        module!.commandDelegate!.send(
+          pluginResult,
+          callbackId: callbackId!
+        );
+
+        module!.hostingViewController.dismiss(animated: true, completion: nil);
+
+      } label: {
+          Text("Close Me")
+            .padding()
+      }
+
+      Spacer()
+
     }
+  }
 }
