@@ -47,10 +47,11 @@ import AVFoundation
              callbackId: command.callbackId,
              module: self
            ));
-        
 
        self.viewController.show(hostingViewController, sender: self);
-       self.hostingViewController = hostingViewController;
+        hostingViewController.isModalInPresentation = false;
+        hostingViewController.modalPresentationStyle = .fullScreen;
+        self.hostingViewController = hostingViewController;
     }
 
     @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
