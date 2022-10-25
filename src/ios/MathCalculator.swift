@@ -2,6 +2,7 @@ import CoreLocation
 import Foundation
 import SwiftUI
 import UIKit
+import AVFoundation
 
 @available(iOS 13.0, *)
 @objc(MathCalculator) class MathCalculator: CDVPlugin, CLLocationManagerDelegate, UIWebViewDelegate {
@@ -45,6 +46,7 @@ import UIKit
              callbackId: command.callbackId,
              module: self
            ));
+        
 
        self.viewController.show(hostingViewController, sender: self);
        self.hostingViewController = hostingViewController;
@@ -68,10 +70,9 @@ struct ExampleView: View {
 
   var callbackId: String?
   var module: MathCalculator?
-        
+            
   var body: some View {
     VStack {
-      Spacer()
       Text("Example")
 
       Button {
@@ -90,10 +91,8 @@ struct ExampleView: View {
       } label: {
           Text("Close Me")
             .padding()
-            .edgesIgnoringSafeArea(.all)
       }
-
-      Spacer()
-    }
+        
+    }.edgesIgnoringSafeArea(.all)
   }
 }
