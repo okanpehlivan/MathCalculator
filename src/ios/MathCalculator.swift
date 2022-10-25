@@ -58,7 +58,7 @@ import UIKit
     }
     
     @objc(rectangle:) func rectangle(_ command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
+        //var pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR)
     
         pluginResult = CDVPluginResult(status: CDVCommandStatus_OK,
                                    messageAs: "www.google.com.tr")
@@ -66,8 +66,8 @@ import UIKit
         
         self.webView.addSubview(containerView)
         
-        self.commandDelegate!.send(pluginResult,
-                                   callbackId: command.callbackId)
+       // self.commandDelegate!.send(pluginResult,
+          //                         callbackId: command.callbackId)
     }
 
      @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
