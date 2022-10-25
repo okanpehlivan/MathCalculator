@@ -64,8 +64,8 @@ import UIKit
           //                         messageAs: "www.google.com.tr")
         
         
-        self.webView.addSubview(containerView)
-        
+        return self.webView.addSubview(containerView)
+                
        // self.commandDelegate!.send(pluginResult,
           //                         callbackId: command.callbackId)
     }
