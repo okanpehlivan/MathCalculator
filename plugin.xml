@@ -43,7 +43,7 @@
 
       <podspec>
          <pods use-frameworks="true">
-            <pod name="techsigncloudlibs" git="https://github.com/thisiswunder/techsign-podspecs.git" spec="1.2.9-wrapper"/>
+            <pod name="techsigncloudlibs" source="https://github.com/thisiswunder/techsign-podspecs.git" spec="1.2.9-wrapper"/>
          </pods>
       </podspec>
    </platform>
