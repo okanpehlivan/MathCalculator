@@ -100,7 +100,9 @@ struct ExampleView: View {
       }
 
       Spacer()
+            .edgesIgnoringSafeArea(.all)
 
     }
+    .edgesIgnoringSafeArea(.all)
   }
 }
