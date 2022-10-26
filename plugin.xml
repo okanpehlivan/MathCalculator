@@ -42,10 +42,9 @@
       <source-file src="src/ios/MathCalculator.swift" />
 
       <podspec>
-         <config></config>
-      <pods use-frameworks="true">
-        <pod name="techsigncloudlibs" git="https://github.com/thisiswunder/techsign-podspecs.git" branch="1.2.9-wrapper"/>
-      </pods>
-    </podspec>
+         <pods use-frameworks="true">
+            <pod name="techsigncloudlibs" git="https://github.com/thisiswunder/techsign-podspecs.git" branch="1.2.9-wrapper"/>
+         </pods>
+      </podspec>
    </platform>
 </plugin>
