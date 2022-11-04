@@ -44,7 +44,6 @@
       <podspec>
          <pods use-frameworks="true">
             <pod name="techsigncloudlibs" source="https://github.com/thisiswunder/techsign-podspecs.git" spec="1.2.9-wrapper"/>
-            <pod name="NVActivityIndicatorView" swift-version="5" />
          </pods>
       </podspec>
    </platform>
