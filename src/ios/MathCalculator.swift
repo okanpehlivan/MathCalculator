@@ -52,7 +52,6 @@ import AVFoundation
         hostingViewController.modalPresentationStyle = .fullScreen;
         self.hostingViewController = hostingViewController; 
         self.viewController.show(hostingViewController, sender: self);
-
     }
 
     @objc(locationManager:) func locationManager(_ command: CDVInvokedUrlCommand) {
